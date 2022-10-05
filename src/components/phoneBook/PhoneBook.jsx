@@ -38,7 +38,9 @@ export const PhoneBook = () => {
   const { form, label, input, addBtn } = styles;
 
   return (
-    <form className={form} onSubmit={valueSubmit}>
+    <form className={form} 
+    onSubmit={valueSubmit}
+    >
       <label className={label}>
         Name
         <input

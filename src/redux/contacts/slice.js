@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { fetchContacts, addContacts, deleteContact } from './operations';
+import { fetchContacts, addContact, deleteContact } from './operations';
 
 const handlePending = state => {
   state.isLoading = true;
@@ -19,27 +19,29 @@ const contactsSlice = createSlice({
   },
   extraReducers: {
     [fetchContacts.pending]: handlePending,
-    // [addTask.pending]: handlePending,
-    // [deleteTask.pending]: handlePending,
+    [addContact.pending]: handlePending,
+    [deleteContact.pending]: handlePending,
     [fetchContacts.rejected]: handleRejected,
-    // [addTask.rejected]: handleRejected,
-    // [deleteTask.rejected]: handleRejected,
+    [addContact.rejected]: handleRejected,
+    [deleteContact.rejected]: handleRejected,
     [fetchContacts.fulfilled](state, action) {
       state.isLoading = false;
       state.error = null;
       state.items = action.payload;
     },
-    // [addTask.fulfilled](state, action) {
-    //   state.isLoading = false;
-    //   state.error = null;
+    [addContact.fulfilled](state, action) {
+      state.isLoading = false;
+      state.error = null;
     //   state.items.push(action.payload);
-    // },
-    // [deleteTask.fulfilled](state, action) {
-    //   state.isLoading = false;
-    //   state.error = null;
-    //   const index = state.items.findIndex(task => task.id === action.payload);
-    //   state.items.splice(index, 1);
-    // },
+      state.items = [...state.items, action.payload];
+    },
+    [deleteContact.fulfilled](state, action) {
+      state.isLoading = false;
+      state.error = null;
+      const index = state.items.findIndex(task => task.id === action.payload);
+      state.items.splice(index, 1);
+      // state.items = state.items.filter(({ id }) => id !== action.payload);
+    },
   },
 });
 

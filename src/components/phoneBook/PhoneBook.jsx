@@ -1,36 +1,34 @@
+import { useDispatch, useSelector } from 'react-redux';
 import styles from './PhoneBook.module.css';
 import { nanoid } from 'nanoid';
-import {
-  useAddContactMutation,
-  useGetContactsQuery,
-} from 'services/contactsApi';
+// import {
+//   useAddContactMutation,
+//   useGetContactsQuery,
+// } from 'services/contactsApi';
+import { selectAllContacts } from 'redux/contacts/selectors';
+import { addContact } from 'redux/contacts/operations';
 
 export const PhoneBook = () => {
-  const { data: contacts = [] } = useGetContactsQuery();
-  const [addContact] = useAddContactMutation();
+  // const { data: contacts = [] } = useGetContactsQuery();
+  // const [addContact] = useAddContactMutation();
+  const dispatch = useDispatch();
+  const contacts = useSelector(selectAllContacts)
 
   const valueSubmit = async e => {
     e.preventDefault();
     const form = e.target;
     const name = form.name.value;
-    const phone = form.phone.value;
+    const number = form.number.value;
 
-    console.log(name, phone);
+    console.log(name, number);
     console.log(contacts);
 
     if (contacts.find(cont => cont.name === name)) {
       alert(`${name} is already in contacts`);
     } else {
-      try {
-        await addContact({
-          id: nanoid(),
-          name,
-          phone,
-        });
-      } catch (error) {
-        alert(`Failed! Save error`);
-      }
-
+      dispatch(addContact({ name, number
+        // , id: nanoid() 
+      }));
       form.reset();
     }
   };
@@ -57,7 +55,7 @@ export const PhoneBook = () => {
         <input
           className={input}
           type="tel"
-          name="phone"
+          name="number"
           pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
           title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
           required

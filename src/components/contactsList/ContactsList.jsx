@@ -1,11 +1,12 @@
 import { ContactItem } from 'components/contactItem/ContactItem';
 import { useSelector } from 'react-redux';
-import { selectAllContacts } from 'redux/contacts/selectors';
+import { selectAllContacts, selectLoading } from 'redux/contacts/selectors';
 import { Loader } from 'components/Loader/Loader';
 import styles from './ContactsList.module.css';
 
 export const ContactsList = () => {
-  const contacts = useSelector(selectAllContacts)
+  const contacts = useSelector(selectAllContacts);
+  const isLoading = useSelector(selectLoading);
 
   const filter = useSelector(state => state.filter);
   const viewContacts = contacts
@@ -16,8 +17,8 @@ export const ContactsList = () => {
   console.log(contacts)
   return (
     <div>
-      {/* {isLoading && <Loader />}
-      {isSuccess && */}
+      {isLoading && <Loader />}
+      {/* {isSuccess &&  */}
         {(contacts?.length > 0 ? (
           
           <ul className={contactsList}>

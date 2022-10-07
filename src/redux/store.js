@@ -21,10 +21,7 @@ const middleware = [
     serializableCheck: {
       ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
     },
-    
-  })
-  // .concat(contactsApi.middleware)
-  ,
+  }),
 ];
 
 // Persisting token field from auth slice to localstorage
@@ -38,7 +35,6 @@ export const store = configureStore({
   reducer: {
     auth: persistReducer(authPersistConfig, authReducer),
     filter: filterReducer,
-    // [contactsApi.reducerPath]: contactsApi.reducer,
     contacts: contactsReducer,
   },
   middleware,

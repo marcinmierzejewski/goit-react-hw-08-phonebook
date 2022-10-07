@@ -8,18 +8,6 @@ import { selectLoading } from 'redux/contacts/selectors';
 import { fetchContacts } from 'redux/contacts/operations';
 import styles from './Contacts.module.css';
 
-// const styles = {
-//   wrapper: {
-//     maxWidth: '600px',
-//     margin: '50px auto',
-//     padding: '30px',
-//     backgroundColor: 'rgb(241, 241, 239)',
-//     borderTopRightRadius: '50px',
-//     borderBottomLeftRadius: '50px',
-//     boxShadow: '2px 2px 10px rgb(39, 37, 37)',
-//   },
-// };
-
 export default function Contacts() {
   const { wrapper } = styles;
 
@@ -42,4 +30,4 @@ export default function Contacts() {
       </Section>
     </div>
   );
-};
+}

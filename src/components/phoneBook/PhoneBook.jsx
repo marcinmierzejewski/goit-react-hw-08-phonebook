@@ -1,18 +1,11 @@
 import { useDispatch, useSelector } from 'react-redux';
 import styles from './PhoneBook.module.css';
-// import { nanoid } from 'nanoid';
-// import {
-//   useAddContactMutation,
-//   useGetContactsQuery,
-// } from 'services/contactsApi';
 import { selectAllContacts } from 'redux/contacts/selectors';
 import { addContact } from 'redux/contacts/operations';
 
 export const PhoneBook = () => {
-  // const { data: contacts = [] } = useGetContactsQuery();
-  // const [addContact] = useAddContactMutation();
   const dispatch = useDispatch();
-  const contacts = useSelector(selectAllContacts)
+  const contacts = useSelector(selectAllContacts);
 
   const valueSubmit = async e => {
     e.preventDefault();
@@ -26,9 +19,7 @@ export const PhoneBook = () => {
     if (contacts.find(cont => cont.name === name)) {
       alert(`${name} is already in contacts`);
     } else {
-      dispatch(addContact({ name, number
-        // , id: nanoid() 
-      }));
+      dispatch(addContact({ name, number }));
       form.reset();
     }
   };
@@ -36,9 +27,7 @@ export const PhoneBook = () => {
   const { form, label, input, addBtn } = styles;
 
   return (
-    <form className={form} 
-    onSubmit={valueSubmit}
-    >
+    <form className={form} onSubmit={valueSubmit}>
       <label className={label}>
         Name
         <input

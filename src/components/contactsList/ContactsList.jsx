@@ -14,21 +14,20 @@ export const ContactsList = () => {
     .sort((first, second) => first.name.localeCompare(second.name));
 
   const { contactsList } = styles;
-  console.log(contacts)
+  console.log(contacts);
   return (
     <div>
       {isLoading && <Loader />}
       {/* {isSuccess &&  */}
-        {(contacts?.length > 0 ? (
-          
-          <ul className={contactsList}>
-            {viewContacts.map(({ id, name, number }) => (
-              <ContactItem key={id} id={id} name={name} number={number} />
-            ))}
-          </ul>
-        ) : (
-          <p className={contactsList}> No contacts available </p>
-        ))}
+      {contacts?.length > 0 ? (
+        <ul className={contactsList}>
+          {viewContacts.map(({ id, name, number }) => (
+            <ContactItem key={id} id={id} name={name} number={number} />
+          ))}
+        </ul>
+      ) : (
+        <p className={contactsList}> No contacts available </p>
+      )}
       {/* {isError && <p className={contactsList}> Error: {error} </p>} */}
     </div>
   );

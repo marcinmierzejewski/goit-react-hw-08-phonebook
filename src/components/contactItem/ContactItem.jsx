@@ -1,11 +1,9 @@
 import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
-// import { useDeleteContactMutation } from 'services/contactsApi';
 import { deleteContact } from 'redux/contacts/operations';
 import styles from './ContactItem.module.css';
 
 export const ContactItem = ({ id, name, number }) => {
-  // const [deleteContact] = useDeleteContactMutation();
   const { contactItem, contactName, contactWrapper, btn } = styles;
   const dispatch = useDispatch();
 

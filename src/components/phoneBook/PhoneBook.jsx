@@ -13,9 +13,6 @@ export const PhoneBook = () => {
     const name = form.name.value;
     const number = form.number.value;
 
-    console.log(name, number);
-    console.log(contacts);
-
     if (contacts.find(cont => cont.name === name)) {
       alert(`${name} is already in contacts`);
     } else {

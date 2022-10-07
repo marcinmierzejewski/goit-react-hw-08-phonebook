@@ -14,7 +14,7 @@ export const ContactsList = () => {
     .sort((first, second) => first.name.localeCompare(second.name));
 
   const { contactsList } = styles;
-  console.log(contacts);
+  
   return (
     <div>
       {isLoading && <Loader />}

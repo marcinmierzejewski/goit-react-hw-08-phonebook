@@ -23,11 +23,11 @@ export const register = createAsyncThunk(
     try {
       const res = await axios.post('users/signup', credentials);
       const data = res.data;
-      console.log(data);
       // After successful register, add the token to the HTTP header
       setAuthHeader(data.token);
       return data;
     } catch (error) {
+      alert("Invalid data entered");
       return thunkAPI.rejectWithValue(error.message);
     }
   }
@@ -46,6 +46,7 @@ export const logIn = createAsyncThunk(
       setAuthHeader(data.token);
       return data;
     } catch (error) {
+      alert("Wrong password or email");
       return thunkAPI.rejectWithValue(error.message);
     }
   }

@@ -6,7 +6,8 @@ export const Link = styled(NavLink)`
   border-radius: 4px;
   text-decoration: none;
   color: black;
-  font-weight: 500;
+  font-weight: 700;
+  font-size: 18px;
   &.active {
     color: rgb(75, 62, 142);
     border-bottom: 2px solid rgb(75, 62, 142);
@@ -19,4 +20,9 @@ export const LinkHome = styled(NavLink)`
   text-decoration: none;
   color: black;
   font-weight: 500;
+`;
+
+export const NavHome = styled.nav`
+  display: flex;
+  align-items: center;
 `;

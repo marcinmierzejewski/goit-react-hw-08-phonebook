@@ -6,7 +6,7 @@ import styles from './AppBar.module.css';
 
 export const AppBar = () => {
   const { isLoggedIn } = useAuth();
-  const { header } = styles
+  const { header } = styles;
 
   return (
     <header className={header}>

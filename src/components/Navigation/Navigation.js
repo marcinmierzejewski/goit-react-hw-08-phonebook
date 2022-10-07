@@ -1,14 +1,16 @@
 // import { NavLink } from 'react-router-dom';
 import { useAuth } from 'hooks';
-import { Link, LinkHome } from './Navigation.styled';
+import { Link, LinkHome, NavHome } from './Navigation.styled';
+import homeIcon from './images/home.png';
+
 
 export const Navigation = () => {
   const { isLoggedIn } = useAuth();
 
   return (
-    <nav>
-      <LinkHome to="/">Home</LinkHome>
+    <NavHome>
+      <LinkHome to="/"><img src={homeIcon} alt="Home" width='30'></img></LinkHome>
       {isLoggedIn && <Link to="/contacts">Contacts</Link>}
-    </nav>
+    </NavHome>
   );
 };

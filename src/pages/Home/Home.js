@@ -12,7 +12,7 @@ export default function Home() {
       <Section title="Phonebook">
         {isLoggedIn ? (<>
           <p className={title}>Welcome back {user.name}</p>
-          <p className={title}>Your <Link to='/contacts'>contacts &#187;</Link> </p>
+          <p className={welcome}>Your <Link to='/contacts'>contacts &#187;</Link> </p>
           </>
         ) : (
           <div>

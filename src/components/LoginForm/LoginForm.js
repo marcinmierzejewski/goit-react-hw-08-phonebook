@@ -1,3 +1,4 @@
+import toast from 'react-hot-toast';
 import { useDispatch } from 'react-redux';
 import { logIn } from 'redux/auth/operations';
 import styles from './LoginForm.module.css';
@@ -11,7 +12,7 @@ export const LoginForm = () => {
     const email = form.email.value;
     const password = form.password.value;
     if ((email && password) === '') {
-      alert('Email and password fields cannot be empty')
+      toast.error('Email and password fields cannot be empty');
       return
     } else {
       dispatch(logIn({ email, password }));

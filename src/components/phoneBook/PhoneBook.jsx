@@ -2,6 +2,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import styles from './PhoneBook.module.css';
 import { selectAllContacts } from 'redux/contacts/selectors';
 import { addContact } from 'redux/contacts/operations';
+import toast from 'react-hot-toast';
 
 export const PhoneBook = () => {
   const dispatch = useDispatch();
@@ -14,9 +15,10 @@ export const PhoneBook = () => {
     const number = form.number.value;
 
     if (contacts.find(cont => cont.name === name)) {
-      alert(`${name} is already in contacts`);
+      toast.error(`${name} is already in contacts`)
     } else {
       dispatch(addContact({ name, number }));
+      toast.success(`${name} has been added to contacts list`)
       form.reset();
     }
   };

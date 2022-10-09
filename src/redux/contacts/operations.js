@@ -1,5 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
+import toast from 'react-hot-toast';
 
 // axios.defaults.baseURL = 'https://connections-api.herokuapp.com/';
 
@@ -35,6 +36,7 @@ export const deleteContact = createAsyncThunk(
   async (contactId, thunkAPI) => {
     try {
       const response = await axios.delete(`/contacts/${contactId}`);
+      toast.success("Delete contact successful");
       return response.data;
     } catch (e) {
       return thunkAPI.rejectWithValue(e.message);
